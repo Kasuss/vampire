@@ -1,0 +1,370 @@
+[gd_scene load_steps=15 format=3 uid="uid://g0jvmsn6uq53"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_1xqjk"]
+[ext_resource type="PackedScene" uid="uid://yk8ygnk5kxyy" path="res://character.tscn" id="1_d25h8"]
+[ext_resource type="Script" path="res://LevelBar.gd" id="2_623s4"]
+[ext_resource type="PackedScene" uid="uid://fqb1rtj70qus" path="res://trees/tree.tscn" id="3_kykgg"]
+[ext_resource type="PackedScene" uid="uid://drsbkyaq2juli" path="res://slime.tscn" id="3_pm8og"]
+
+[sub_resource type="GDScript" id="GDScript_8agjb"]
+script/source = "extends Label
+
+func _process(delta):
+	text = \"Level: \" + str(Game.playerLevel)
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcltc"]
+bg_color = Color(0, 0, 0, 0.176471)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.294118)
+shadow_size = 2
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kijjg"]
+bg_color = Color(0.0627451, 0.698039, 0.937255, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0, 0.478431, 0.764706, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="GDScript" id="GDScript_i28sw"]
+script/source = "extends Label
+
+func _process(delta):
+	text = str(Game.xp) + \" / \" + str(Game.xp_max)
+"
+
+[sub_resource type="GDScript" id="GDScript_v6mhp"]
+resource_name = "time"
+script/source = "extends Label
+
+@onready var start_time = Time.get_ticks_msec() / 1000.0
+@onready var current_time = Time.get_ticks_msec() / 1000.0
+var paused_time = 0
+var resumed_time = 0
+var timer = 0
+var paused = false
+
+func resume_time():
+	resumed_time = Time.get_ticks_msec() / 1000.0
+	start_time = resumed_time - timer
+
+func _process(_delta):
+	if Game.gameover == false and paused == false:
+		current_time = Time.get_ticks_msec() / 1000.0
+		timer = roundi(current_time - start_time)
+		Game.minute = floori(timer / 60.0)
+		Game.seconds = timer - Game.minute * 60.0
+		if Input.is_action_just_released(\"pause\"):
+			paused = true
+	else:
+		if Input.is_action_just_released(\"pause\"):
+			paused = false
+			resume_time()
+	
+	if Game.seconds < 10:
+		text = str(Game.minute) + \":0\" + str(Game.seconds)
+	else:
+		text = str(Game.minute) + \":\" + str(Game.seconds)
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1h7d"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpyr2"]
+bg_color = Color(0.415686, 0.415686, 0.415686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fhpx"]
+bg_color = Color(0.415686, 0.415686, 0.415686, 1)
+
+[sub_resource type="Curve2D" id="Curve2D_mufr3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -67, 50, 0, 0, 0, 0, 1761, 50, 0, 0, 0, 0, 1761, 1094, 0, 0, 0, 0, -67, 1101, 0, 0, 0, 0, -67, 50)
+}
+point_count = 5
+
+[node name="world" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_1xqjk")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Level" type="Label" parent="UI"]
+unique_name_in_owner = true
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 246.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 30
+text = "Level: 1"
+script = SubResource("GDScript_8agjb")
+
+[node name="LevelBar" type="ProgressBar" parent="UI"]
+unique_name_in_owner = true
+offset_left = 200.0
+offset_top = 50.0
+offset_right = 390.0
+offset_bottom = 96.0
+theme_override_styles/background = SubResource("StyleBoxFlat_xcltc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kijjg")
+value = 50.0
+show_percentage = false
+script = ExtResource("2_623s4")
+
+[node name="LevelProgress" type="Label" parent="UI"]
+unique_name_in_owner = true
+offset_left = 200.0
+offset_top = 50.0
+offset_right = 396.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 30
+text = "5/10"
+horizontal_alignment = 1
+script = SubResource("GDScript_i28sw")
+
+[node name="Time" type="Label" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.0
+offset_top = -69.0
+offset_right = 98.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Time: 0:00"
+horizontal_alignment = 1
+script = SubResource("GDScript_v6mhp")
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+modulate = Color(1, 1, 1, 0.564706)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0.215686, 0.137255, 1)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.5
+offset_top = -111.5
+offset_right = 263.5
+offset_bottom = 111.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.768627, 0.113725, 0.239216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 70
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="continue" type="Button" parent="GameOver/ColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 400.0
+offset_top = -249.0
+offset_right = 519.0
+offset_bottom = -200.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0.478431, 0.764706, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_s1h7d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vpyr2")
+text = "Again"
+
+[node name="quit" type="Button" parent="GameOver/ColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -519.0
+offset_top = -249.0
+offset_right = -400.0
+offset_bottom = -200.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.768627, 0.113725, 0.239216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_s1h7d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2fhpx")
+text = "Quit"
+
+[node name="Paused" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Paused"]
+modulate = Color(1, 1, 1, 0.564706)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0.215686, 0.137255, 1)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Paused/ColorRect"]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.5
+offset_top = -111.5
+offset_right = 263.5
+offset_bottom = 111.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.768627, 0.113725, 0.239216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 70
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="quit" type="Button" parent="Paused/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = 98.0
+offset_right = 59.5
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.768627, 0.113725, 0.239216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_s1h7d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2fhpx")
+text = "Quit"
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -69
+
+[node name="ColorRect" type="ColorRect" parent="BG"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196078, 0.482353, 0.329412, 1)
+metadata/_edit_lock_ = true
+
+[node name="All" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="trees" type="Node2D" parent="All"]
+y_sort_enabled = true
+position = Vector2(20, -108)
+metadata/_edit_lock_ = true
+
+[node name="tree" parent="All/trees" instance=ExtResource("3_kykgg")]
+position = Vector2(826, 169)
+
+[node name="tree2" parent="All/trees" instance=ExtResource("3_kykgg")]
+position = Vector2(826, 985)
+
+[node name="tree3" parent="All/trees" instance=ExtResource("3_kykgg")]
+position = Vector2(416, 562)
+
+[node name="tree4" parent="All/trees" instance=ExtResource("3_kykgg")]
+position = Vector2(1237, 562)
+
+[node name="tree5" parent="All/trees" instance=ExtResource("3_kykgg")]
+position = Vector2(1114, 847)
+
+[node name="tree6" parent="All/trees" instance=ExtResource("3_kykgg")]
+position = Vector2(529, 847)
+
+[node name="tree7" parent="All/trees" instance=ExtResource("3_kykgg")]
+position = Vector2(529, 301)
+
+[node name="tree8" parent="All/trees" instance=ExtResource("3_kykgg")]
+position = Vector2(1119, 301)
+
+[node name="character" parent="All" instance=ExtResource("1_d25h8")]
+position = Vector2(856, 435)
+metadata/_edit_lock_ = true
+
+[node name="Path2D" type="Path2D" parent="All/character"]
+position = Vector2(-1217, -886)
+scale = Vector2(1.53501, 1.56518)
+curve = SubResource("Curve2D_mufr3")
+
+[node name="spawn" type="PathFollow2D" parent="All/character/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-67, 50)
+
+[node name="SpawnTimer" type="Timer" parent="All"]
+unique_name_in_owner = true
+wait_time = 5.0
+autostart = true
+
+[node name="slime" parent="All" instance=ExtResource("3_pm8og")]
+position = Vector2(1497, 679)
+
+[node name="LevelEnemies" type="Timer" parent="All"]
+unique_name_in_owner = true
+wait_time = 30.0
+autostart = true
+
+[connection signal="gameover" from="." to="." method="_on_gameover"]
+[connection signal="pressed" from="GameOver/ColorRect/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="GameOver/ColorRect/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Paused/ColorRect/quit" to="." method="_on_quit_pressed"]
+[connection signal="health_depleted" from="All/character" to="." method="_on_character_health_depleted"]
+[connection signal="health_depleted" from="All/character" to="All" method="_on_character_health_depleted"]
+[connection signal="timeout" from="All/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="All/LevelEnemies" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="All/LevelEnemies" to="." method="_on_level_enemies_timeout"]

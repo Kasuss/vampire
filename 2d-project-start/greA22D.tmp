@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://de1m75ivve6a4"]
+
+[ext_resource type="Texture2D" uid="uid://dn80eu1qs371v" path="res://pistol/impact/circle.png" id="1_b3u13"]
+[ext_resource type="Script" path="res://grenade.gd" id="1_posiv"]
+[ext_resource type="PackedScene" uid="uid://dhmhmrth6rdce" path="res://smoke_explosion/smoke_explosion.tscn" id="3_shcnk"]
+
+[sub_resource type="Animation" id="Animation_d72gt"]
+resource_name = "explode"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SmokeExplosion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_w6wwb"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4rvpb"]
+_data = {
+"RESET": SubResource("Animation_w6wwb"),
+"explode": SubResource("Animation_d72gt")
+}
+
+[node name="grenade" type="Node2D"]
+script = ExtResource("1_posiv")
+
+[node name="Circle" type="Sprite2D" parent="."]
+modulate = Color(0.129412, 0.45098, 0.184314, 1)
+texture = ExtResource("1_b3u13")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_4rvpb")
+}
+
+[node name="SmokeExplosion" parent="." instance=ExtResource("3_shcnk")]
+position = Vector2(344, 176)
+scale = Vector2(3, 3)

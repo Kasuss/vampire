@@ -1,0 +1,14 @@
+res://grenade.tscn
+res://character.gd
+res://smoke_explosion/smoke_explosion.gdshader
+res://grenade.gd
+res://world tiles/new_world.tscn
+res://characters/slime/slime.tscn
+res://character.tscn
+res://gun.tscn
+res://boolet.tscn
+res://slime.tscn
+res://gun.gd
+res://smoke_explosion/smoke_explosion.tscn
+res://boolet_ricochet.tscn
+res://boolet.gd

@@ -1,0 +1,25 @@
+res://characters/happy_boo/happy_boo.tscn::7d48c0cba40e4431e2d38dd5bee1979a::1711408904::res://.godot/exported/133200997/export-d648d95b60292c6ab5a2df3cfa132f65-happy_boo.scn
+res://characters/happy_boo/square_modification_stack.tres::c50df0cb08042a928161eb2d35e7a5f9::1711296179::res://.godot/exported/133200997/export-f25555e8dbdc63b0046bd11dbf14cb6d-square_modification_stack.res
+res://characters/slime/slime.tscn::95c349b9eb9337fdcf634a22daf1234b::1711510194::res://.godot/exported/133200997/export-00cd1686d0dcba26ac4404616e000a71-slime.scn
+res://pistol/impact/impact.tscn::70de8a953a5d30f939fdcb5ae2f70342::1711407893::res://.godot/exported/133200997/export-23af5b5b4b536de664300f16912ab0a5-impact.scn
+res://pistol/muzzle_flash/muzzle_flash.tscn::fe6401070fa1c09ba32555ef26ac32b4::1711493418::res://.godot/exported/133200997/export-b157f8b9faf8fae6f6c4fc021b88b5f1-muzzle_flash.scn
+res://smoke_explosion/smoke_explosion.tscn::41e46ad835c8e8b1332e193ba8b3acf8::1711510195::res://.godot/exported/133200997/export-e72ef0eae21a758bfc24d9e4f444eb60-smoke_explosion.scn
+res://trees/grass.tscn::8ffaba5b2b75db80386735e29da21dfe::1711401939::res://.godot/exported/133200997/export-6a68aa5756effbc23b429ff3456e7cad-grass.scn
+res://trees/tree.tscn::cc4a0091148be52751bb00f56d782e2a::1711503983::res://.godot/exported/133200997/export-55f978145c1398120b995b6e6de477b0-tree.scn
+res://world tiles/basictrees.tscn::ae5cba43f7df7d1ccad5865e00927231::1711407893::res://.godot/exported/133200997/export-e5e791265f860df8d7bea21d1b5eb113-basictrees.scn
+res://world tiles/bunchedtrees.tscn::dee8f799159735a7a07804b8d431c8fa::1711407893::res://.godot/exported/133200997/export-a7aa8b8e830ab2f155ed300790e0d63d-bunchedtrees.scn
+res://world tiles/circletrees.tscn::286dfbe70ee783d169df8a792b3836d8::1711407893::res://.godot/exported/133200997/export-c8cd917f2f5ceb0df3873dbf55f54f43-circletrees.scn
+res://world tiles/grass.tscn::deecc533f48ecb7413a325ca5bf75cb0::1711403207::res://.godot/exported/133200997/export-63b43d68739dfefb29183bb9ac5a8a93-grass.scn
+res://world tiles/new_world.tscn::87ecd2e96bc3d94c7398fa439a23fdf9::1711510194::res://.godot/exported/133200997/export-f67baa6fcbd0aa1936fb4790ffeadba8-new_world.scn
+res://world tiles/test.tscn::e35c4bb8cbf1a93a0d8d5c782ae43bd3::1711403542::res://.godot/exported/133200997/export-212667e977759229edec7de665832871-test.scn
+res://bleed.tscn::ab062814e8de8b1217822d50a4d53f37::1711407964::res://.godot/exported/133200997/export-276088cdda89480805e9517ba512a813-bleed.scn
+res://blue xp.tres::1fd20759e971e014dd1bc2d7bdd97da7::1711327945::res://.godot/exported/133200997/export-662636e357a0c9eb250a4c980f538cdc-blue xp.res
+res://boolet.tscn::d32b6e9c2b0b73a5cf1e4f4546736466::1711510195::res://.godot/exported/133200997/export-cc73e06cecba1c6bcf17a128372c1bbc-boolet.scn
+res://boolet_ricochet.tscn::49aea1e1ed22274a070f03df0b1de17a::1711510195::res://.godot/exported/133200997/export-f057b5f1c63f293d0571c2c8ae614405-boolet_ricochet.scn
+res://character.tscn::6387ccf7cebc5cc39f0899a13d68ace3::1711510194::res://.godot/exported/133200997/export-053c088fcfd156ea19f3d1ba53835dc9-character.scn
+res://default_bus_layout.tres::f79fcacca07a2d471d5d1918fc173cbc::1711296179::res://.godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res
+res://grenade.tscn::1b753040a8cf2e72d771a747b8058c57::1711510195::res://.godot/exported/133200997/export-a6e529f06a83c536ecb38168f07eb90f-grenade.scn
+res://gun.tscn::a2c59905d06ed4340247839c56f9277b::1711510194::res://.godot/exported/133200997/export-b254bef953a17239ecd110db09321b87-gun.scn
+res://slime.tscn::87ff39bbf4e3b4bcc39c3611086ff27a::1711510195::res://.godot/exported/133200997/export-b756424139543dd116d3f8c138331a28-slime.scn
+res://worldmap.tscn::b1558300684c89ade0da640846fe3452::1711396624::res://.godot/exported/133200997/export-29e252694e4ec11ccb6645559cab4f84-worldmap.scn
+res://xp.tscn::b2a1d39949006fa1fc2af3b2e64f63a6::1711492099::res://.godot/exported/133200997/export-e18281d7804d9af279cfa762c2eaa5c8-xp.scn

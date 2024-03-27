@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://crpyvddqdjilk"]
+
+[ext_resource type="PackedScene" uid="uid://fqb1rtj70qus" path="res://trees/tree.tscn" id="1_somwj"]
+
+[node name="circletrees" type="Node2D"]
+y_sort_enabled = true
+
+[node name="all" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="tree" parent="all" instance=ExtResource("1_somwj")]
+position = Vector2(512, 171)
+
+[node name="tree2" parent="all" instance=ExtResource("1_somwj")]
+position = Vector2(512, 987)
+
+[node name="tree3" parent="all" instance=ExtResource("1_somwj")]
+position = Vector2(102, 564)
+
+[node name="tree4" parent="all" instance=ExtResource("1_somwj")]
+position = Vector2(923, 564)
+
+[node name="tree5" parent="all" instance=ExtResource("1_somwj")]
+position = Vector2(800, 849)
+
+[node name="tree6" parent="all" instance=ExtResource("1_somwj")]
+position = Vector2(215, 849)
+
+[node name="tree7" parent="all" instance=ExtResource("1_somwj")]
+position = Vector2(215, 303)
+
+[node name="tree8" parent="all" instance=ExtResource("1_somwj")]
+position = Vector2(805, 303)

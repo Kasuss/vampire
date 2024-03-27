@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc2xpqhh42cg4"]
+
+[ext_resource type="PackedScene" uid="uid://fqb1rtj70qus" path="res://trees/tree.tscn" id="1_uqtr2"]
+[ext_resource type="PackedScene" uid="uid://g310fupdwnvu" path="res://trees/grass.tscn" id="2_fy74f"]
+
+[sub_resource type="GDScript" id="GDScript_dekvn"]
+script/source = "extends Node2D
+
+func _ready():
+	var start = randi_range(1,3)
+	for step in start:
+		var rando = Vector2(randi_range(0,1024),randi_range(0,1024))
+		var grass = get_node(\"all/grass\"+str(step))
+		var tree = get_node(\"all/tree\"+str(step))
+		grass.global_position += rando
+		tree.global_position += rando
+"
+
+[node name="basictrees" type="Node2D"]
+y_sort_enabled = true
+script = SubResource("GDScript_dekvn")
+
+[node name="all" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="tree0" parent="all" instance=ExtResource("1_uqtr2")]
+
+[node name="tree1" parent="all" instance=ExtResource("1_uqtr2")]
+
+[node name="tree2" parent="all" instance=ExtResource("1_uqtr2")]
+
+[node name="grass0" parent="all" instance=ExtResource("2_fy74f")]
+position = Vector2(174, 415)
+
+[node name="grass1" parent="all" instance=ExtResource("2_fy74f")]
+position = Vector2(465, 867)
+
+[node name="grass2" parent="all" instance=ExtResource("2_fy74f")]
+position = Vector2(584, 656)

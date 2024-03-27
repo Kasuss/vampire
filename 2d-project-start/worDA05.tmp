@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceno47lo3xyrg"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_1xqjk"]
+[ext_resource type="PackedScene" uid="uid://yk8ygnk5kxyy" path="res://character.tscn" id="1_d25h8"]
+[ext_resource type="PackedScene" uid="uid://fqb1rtj70qus" path="res://tree.tscn" id="2_eqdc0"]
+
+[sub_resource type="Curve2D" id="Curve2D_mufr3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -67, 50, 0, 0, 0, 0, 1761, 50, 0, 0, 0, 0, 1761, 1094, 0, 0, 0, 0, -67, 1101, 0, 0, 0, 0, -67, 50)
+}
+point_count = 5
+
+[node name="world" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_1xqjk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -69
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.831373, 0.831373, 0.831373, 1)
+metadata/_edit_lock_ = true
+
+[node name="character" parent="." instance=ExtResource("1_d25h8")]
+position = Vector2(833, 588)
+
+[node name="trees" type="Node2D" parent="."]
+y_sort_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="tree3" parent="trees" instance=ExtResource("2_eqdc0")]
+position = Vector2(297, 633)
+
+[node name="tree2" parent="trees" instance=ExtResource("2_eqdc0")]
+position = Vector2(348, 688)
+
+[node name="tree" parent="trees" instance=ExtResource("2_eqdc0")]
+position = Vector2(263, 714)
+
+[node name="tree4" parent="trees" instance=ExtResource("2_eqdc0")]
+position = Vector2(454, 258)
+
+[node name="tree5" parent="trees" instance=ExtResource("2_eqdc0")]
+position = Vector2(1621, 327)
+
+[node name="tree6" parent="trees" instance=ExtResource("2_eqdc0")]
+position = Vector2(1170, 370)
+
+[node name="tree7" parent="trees" instance=ExtResource("2_eqdc0")]
+position = Vector2(1287, 830)
+
+[node name="tree8" parent="trees" instance=ExtResource("2_eqdc0")]
+position = Vector2(1244, 855)
+
+[node name="tree9" parent="trees" instance=ExtResource("2_eqdc0")]
+position = Vector2(759, 895)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-384, -298)
+scale = Vector2(1.53501, 1.56518)
+curve = SubResource("Curve2D_mufr3")
+
+[node name="spawn" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(-67, 50)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true

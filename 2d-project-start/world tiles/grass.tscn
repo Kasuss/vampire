@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdq2f3rk8jbh2"]
+
+[ext_resource type="PackedScene" uid="uid://g310fupdwnvu" path="res://trees/grass.tscn" id="2_14h0j"]
+
+[sub_resource type="GDScript" id="GDScript_40m8u"]
+script/source = "extends Node2D
+
+func _ready():
+	var start = randi_range(1,10)
+	for step in start:
+		var rando = Vector2(randi_range(0,1024),randi_range(0,1024))
+		var grass = get_node(\"grass\"+str(step))
+		grass.global_position += rando/2
+"
+
+[node name="grass" type="Node2D"]
+z_as_relative = false
+script = SubResource("GDScript_40m8u")
+
+[node name="grass0" parent="." instance=ExtResource("2_14h0j")]
+unique_name_in_owner = true
+z_as_relative = false
+position = Vector2(860, 516)
+
+[node name="grass7" parent="." instance=ExtResource("2_14h0j")]
+unique_name_in_owner = true
+z_as_relative = false
+position = Vector2(488, 646)
+
+[node name="grass5" parent="." instance=ExtResource("2_14h0j")]
+unique_name_in_owner = true
+z_as_relative = false
+position = Vector2(777, 159)
+
+[node name="grass6" parent="." instance=ExtResource("2_14h0j")]
+unique_name_in_owner = true
+z_as_relative = false
+position = Vector2(238, 357)
+
+[node name="grass1" parent="." instance=ExtResource("2_14h0j")]
+unique_name_in_owner = true
+z_as_relative = false
+position = Vector2(305, 812)
+
+[node name="grass2" parent="." instance=ExtResource("2_14h0j")]
+unique_name_in_owner = true
+z_as_relative = false
+position = Vector2(635, 358)
+
+[node name="grass3" parent="." instance=ExtResource("2_14h0j")]
+unique_name_in_owner = true
+z_as_relative = false
+position = Vector2(818, 942)
+
+[node name="grass8" parent="." instance=ExtResource("2_14h0j")]
+unique_name_in_owner = true
+z_as_relative = false
+position = Vector2(1020, 785)
+
+[node name="grass9" parent="." instance=ExtResource("2_14h0j")]
+unique_name_in_owner = true
+z_as_relative = false
+position = Vector2(382, 79)
+
+[node name="grass4" parent="." instance=ExtResource("2_14h0j")]
+unique_name_in_owner = true
+z_as_relative = false
+position = Vector2(532, 316)

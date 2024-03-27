@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://ymalsay673b0"]
+
+[ext_resource type="PackedScene" uid="uid://fqb1rtj70qus" path="res://trees/tree.tscn" id="1_3qq4m"]
+[ext_resource type="PackedScene" uid="uid://g310fupdwnvu" path="res://trees/grass.tscn" id="2_so5pg"]
+
+[sub_resource type="GDScript" id="GDScript_isyoe"]
+script/source = "extends Node2D
+
+func _ready():
+	var start = randi_range(1,3)
+	for step in start:
+		var rando = Vector2(randi_range(0,1024),randi_range(0,1024))
+		var grass = get_node(\"all/grass\"+str(step))
+		var tree = get_node(\"all/tree\"+str(step))
+		grass.global_position += rando
+		tree.global_position += rando
+"
+
+[node name="bunchedtrees" type="Node2D"]
+y_sort_enabled = true
+script = SubResource("GDScript_isyoe")
+
+[node name="all" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="tree1" type="Node2D" parent="all"]
+y_sort_enabled = true
+
+[node name="tree3" parent="all/tree1" instance=ExtResource("1_3qq4m")]
+position = Vector2(282, 770)
+
+[node name="tree5" parent="all/tree1" instance=ExtResource("1_3qq4m")]
+position = Vector2(245, 795)
+
+[node name="tree0" type="Node2D" parent="all"]
+y_sort_enabled = true
+
+[node name="tree2" parent="all/tree0" instance=ExtResource("1_3qq4m")]
+position = Vector2(547, 279)
+
+[node name="tree4" parent="all/tree0" instance=ExtResource("1_3qq4m")]
+position = Vector2(613, 307)
+
+[node name="tree6" parent="all/tree0" instance=ExtResource("1_3qq4m")]
+position = Vector2(583, 349)
+
+[node name="tree2" parent="all" instance=ExtResource("1_3qq4m")]
+y_sort_enabled = true
+
+[node name="grass0" parent="all" instance=ExtResource("2_so5pg")]
+z_as_relative = false
+position = Vector2(916, 471)
+
+[node name="grass1" parent="all" instance=ExtResource("2_so5pg")]
+z_as_relative = false
+position = Vector2(305, 812)
+
+[node name="grass2" parent="all" instance=ExtResource("2_so5pg")]
+z_as_relative = false
+position = Vector2(635, 358)

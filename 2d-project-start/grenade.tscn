@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://de1m75ivve6a4"]
+
+[ext_resource type="Texture2D" uid="uid://dn80eu1qs371v" path="res://pistol/impact/circle.png" id="1_b3u13"]
+[ext_resource type="Script" path="res://grenade.gd" id="1_posiv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5mbey"]
+radius = 237.609
+
+[node name="grenade" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_posiv")
+
+[node name="Circle" type="Sprite2D" parent="."]
+modulate = Color(0.129412, 0.45098, 0.184314, 1)
+texture = ExtResource("1_b3u13")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5mbey")
+debug_color = Color(0.964706, 0.133333, 0.341176, 0.419608)
