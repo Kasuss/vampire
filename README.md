@@ -6,3 +6,16 @@ Current project direction is just feature creep the game, add whatever feature y
 an already implemented system please keep the old system for learning purposes.
 
 # Project Structure
+```js
+├───characters
+│   ├───happy_boo
+│   └───slime
+├───Global
+├───my_assets
+├───pistol
+│   ├───impact
+│   └───muzzle_flash
+├───smoke_explosion
+├───trees
+└───world tiles
+```
