@@ -1,0 +1,21 @@
+{
+	"enemyLevel": 2,
+	"inventory": {
+		"Firing Speed": 1,
+		"Grenades": 5,
+		"Missile": 0,
+		"Ricochet": 0
+	},
+	"minute": 1,
+	"playerLevel": 3,
+	"position": "(1264.514, 2714.338)",
+	"seconds": 40,
+	"upgrades": {
+		"0": "Grenades",
+		"1": "Firing Speed",
+		"2": "Ricochet",
+		"3": "Missile"
+	},
+	"xp": 12,
+	"xp_max": 17
+}

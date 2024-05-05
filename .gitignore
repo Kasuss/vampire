@@ -2,7 +2,8 @@
 .import/
 export.cfg
 export_presets.cfg
-2d-project-start/.godot/**
+**/.godot
+**/*.tmp
 # Imported translations (automatically generated from CSV files)
 *.translation
 
