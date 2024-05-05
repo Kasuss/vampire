@@ -7,15 +7,12 @@ an already implemented system please keep the old system for learning purposes.
 
 # Project Structure
 ```
-├───characters
-│   ├───happy_boo
-│   └───slime
-├───Global
-├───my_assets
-├───pistol
-│   ├───impact
-│   └───muzzle_flash
-├───smoke_explosion
-├───trees
-└───world tiles
+├───addons
+│   └───colorpicker_presetsoo
+│       └───readme
+├───Assets
+├───Save_Data
+├───Scenes
+├───Scripts
+└───Shaders
 ```
