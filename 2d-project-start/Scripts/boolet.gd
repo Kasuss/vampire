@@ -33,4 +33,3 @@ func _on_body_entered(body):
 		get_parent().add_child(impact)
 		impact.global_position = contact
 		body.take_damage(1)
-

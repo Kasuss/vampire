@@ -14,12 +14,14 @@ func _physics_process(_delta):
 			var target_enemy = spotted.front()
 			var angle = get_angle_to(player.global_position) * 100
 			look_at(target_enemy.global_position)
+			@warning_ignore("standalone_expression")
 			%Timer.start
 			if angle < 0:
 				flip.flip_v = true
 			else:
 				flip.flip_v = false
 		else:
+			@warning_ignore("standalone_expression")
 			%Timer.stop
 			
 
